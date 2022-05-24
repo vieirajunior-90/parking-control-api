@@ -24,26 +24,26 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-        ParkingSpotModel PS1 = new ParkingSpotModel(
-                "10A",
-                LocalDateTime.now(ZoneId.of("UTC")),
-                "Tatiana Macedo",
-                "212B",
-                "A"
-        );
-
-        CarModel C1 = new CarModel(
-                "DHC2A23",
-                "Volkswagen",
-                "Gol",
-                "Silver"
-        );
-
-        PS1.setCarModel(C1);
-
-        carRepository.save(C1);
-        parkingSpotRepository.save(PS1);
+//
+//        ParkingSpotModel PS1 = new ParkingSpotModel(
+//                "10A",
+//                LocalDateTime.now(ZoneId.of("UTC")),
+//                "Tatiana Macedo",
+//                "212B",
+//                "A"
+//        );
+//
+//        CarModel C1 = new CarModel(
+//                "DHC2A23",
+//                "Volkswagen",
+//                "Gol",
+//                "Silver"
+//        );
+//
+//        PS1.setCarModel(C1);
+//
+//        carRepository.save(C1);
+//        parkingSpotRepository.save(PS1);
 
     }
 }

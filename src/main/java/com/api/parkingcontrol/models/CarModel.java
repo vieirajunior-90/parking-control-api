@@ -43,6 +43,7 @@ public class CarModel implements Serializable {
     private String color;
 
     @OneToOne(mappedBy = "carModel", orphanRemoval = true)
+    @JsonIgnore
     @ToString.Exclude
     private ParkingSpotModel parkingSpotModel;
 
