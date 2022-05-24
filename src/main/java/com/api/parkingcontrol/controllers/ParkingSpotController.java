@@ -1,5 +1,6 @@
 package com.api.parkingcontrol.controllers;
 
+import com.api.parkingcontrol.dtos.CarDTO;
 import com.api.parkingcontrol.dtos.ParkingSpotDTO;
 import com.api.parkingcontrol.models.ParkingSpotModel;
 import com.api.parkingcontrol.models.ParkingSpotModel;
@@ -27,6 +28,14 @@ public class ParkingSpotController {
 
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDTO parkingSpotDTO){
+        if(parkingSpotService.existsByParkingSpotNumber(parkingSpotDTO.getParkingSpotNumber())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Parking spot number already exists");
+        }
+
+        if(parkingSpotService.existsByApartmentAndBlock(parkingSpotDTO.getApartment(), parkingSpotDTO.getBlock())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Parking spot already exists");
+        }
+
         var parkingSpotModel = new ParkingSpotModel();
         BeanUtils.copyProperties(parkingSpotDTO, parkingSpotModel);
         parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));

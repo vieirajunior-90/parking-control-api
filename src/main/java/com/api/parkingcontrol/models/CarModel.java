@@ -42,7 +42,6 @@ public class CarModel implements Serializable {
     @Column(nullable = false, length = 70)
     private String color;
 
-    @NonNull
     @OneToOne(optional = false)
     @JsonIgnore
     @JoinColumn(

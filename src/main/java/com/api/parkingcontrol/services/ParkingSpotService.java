@@ -29,5 +29,13 @@ public class ParkingSpotService {
     public ParkingSpotModel findById(UUID id) {
         return parkingSpotRepository.findById(id).orElse(null);
     }
+
+    public boolean existsByParkingSpotNumber(String parkingSpotNumber) {
+        return parkingSpotRepository.existsByParkingSpotNumber(parkingSpotNumber);
+    }
+
+    public boolean existsByApartmentAndBlock(String apartment, String block) {
+        return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
+    }
 }
 

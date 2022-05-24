@@ -26,22 +26,23 @@ public class TestConfig implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
 //        ParkingSpotModel PS1 = new ParkingSpotModel(
-//                "10B",
+//                "10A",
 //                LocalDateTime.now(ZoneId.of("America/Sao_Paulo")),
-//                "Daniel Carvalho",
-//                "302A",
-//                "C"
+//                "Tatiana Macedo",
+//                "212B",
+//                "A"
 //        );
 //
 //        CarModel C1 = new CarModel(
-//                "KVG9AB2",
-//                "Fiat",
-//                "Uno",
-//                "Black",
-//                PS1
+//                "DHC2A23",
+//                "Volkswagen",
+//                "Gol",
+//                "Silver"
 //        );
-
-
+//
+//        C1.setParkingSpotModel(PS1);
+//
+//
 //        parkingSpotRepository.save(PS1);
 //        carRepository.save(C1);
 
