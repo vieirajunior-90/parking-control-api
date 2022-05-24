@@ -1,5 +1,6 @@
 package com.api.parkingcontrol.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -47,7 +48,8 @@ public class ParkingSpotModel implements Serializable {
     @Column(nullable = false, length = 30)
     private String block;
 
-    @OneToOne(optional = false, mappedBy = "parkingSpotModel")
+    @OneToOne
+    @JoinColumn(name = "CAR_ID", referencedColumnName = "id")
     private CarModel carModel;
 
     @Override

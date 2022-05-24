@@ -42,14 +42,7 @@ public class CarModel implements Serializable {
     @Column(nullable = false, length = 70)
     private String color;
 
-    @OneToOne(optional = false)
-    @JsonIgnore
-    @JoinColumn(
-            name = "PARKING_SPOT_ID",
-            unique = true,
-            nullable = false,
-            updatable = false
-    )
+    @OneToOne(mappedBy = "carModel", orphanRemoval = true)
     @ToString.Exclude
     private ParkingSpotModel parkingSpotModel;
 
