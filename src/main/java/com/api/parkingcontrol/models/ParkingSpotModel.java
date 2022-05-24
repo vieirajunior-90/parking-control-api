@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -45,8 +46,7 @@ public class ParkingSpotModel implements Serializable {
     @Column(nullable = false, length = 30)
     private String block;
 
-    @OneToOne(mappedBy = "parkingSpotModel")
-    @ToString.Exclude
+    @OneToOne(optional = false, mappedBy = "parkingSpotModel")
     private CarModel carModel;
 
     @Override

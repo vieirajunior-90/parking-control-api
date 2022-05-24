@@ -40,8 +40,13 @@ public class CarModel implements Serializable {
     @Column(nullable = false, length = 70)
     private String color;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "parking_id", referencedColumnName = "id")
+    @OneToOne(optional = false)
+    @JoinColumn(
+            name = "PARKING_SPOT_ID",
+            unique = true,
+            nullable = false,
+            updatable = false
+    )
     @ToString.Exclude
     private ParkingSpotModel parkingSpotModel;
 
