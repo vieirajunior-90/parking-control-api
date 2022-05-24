@@ -45,6 +45,10 @@ public class ParkingSpotModel implements Serializable {
     @Column(nullable = false, length = 30)
     private String block;
 
+    @OneToOne(mappedBy = "parkingSpotModel")
+    @ToString.Exclude
+    private CarModel carModel;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -15,14 +15,14 @@ import java.util.UUID;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Car implements Serializable {
+public class CarModel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     @NonNull
     @Column(nullable = false, unique = true, length = 7)
@@ -40,11 +40,16 @@ public class Car implements Serializable {
     @Column(nullable = false, length = 70)
     private String color;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "parking_id", referencedColumnName = "id")
+    @ToString.Exclude
+    private ParkingSpotModel parkingSpotModel;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Car car = (Car) o;
+        CarModel car = (CarModel) o;
         return id != null && Objects.equals(id, car.id);
     }
 
