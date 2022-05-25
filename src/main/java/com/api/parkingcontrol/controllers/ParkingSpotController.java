@@ -1,13 +1,14 @@
 package com.api.parkingcontrol.controllers;
 
-import com.api.parkingcontrol.dtos.CarDTO;
 import com.api.parkingcontrol.dtos.ParkingSpotDTO;
 import com.api.parkingcontrol.models.ParkingSpotModel;
-import com.api.parkingcontrol.models.ParkingSpotModel;
-import com.api.parkingcontrol.services.CarService;
 import com.api.parkingcontrol.services.ParkingSpotService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,9 +45,9 @@ public class ParkingSpotController {
     }
     
     @GetMapping
-    public ResponseEntity<List<ParkingSpotModel>> findAll() {
-        List<ParkingSpotModel> parkingSpots = parkingSpotService.findAll();
-        return ResponseEntity.ok().body(parkingSpots);
+    public ResponseEntity<Page<ParkingSpotModel>> findAll(
+            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        return ResponseEntity.ok().body(parkingSpotService.findAll(pageable));
     }
 
     @GetMapping("/{id}")
