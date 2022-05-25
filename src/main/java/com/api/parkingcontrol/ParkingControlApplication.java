@@ -15,7 +15,14 @@ public class ParkingControlApplication {
 
 	@GetMapping("/")
 	public String parkingControlAPI() {
-		return "Parking Control API";
+		return "<h1>Parking Control API</h1>" +
+				"<p>This API is used to control the parking spots and cars.</p>" +
+				"<p>The API is available at: " +
+				"<ul>" +
+				"<li><a href=\"http://localhost:8080/parking-spot\">PARKING SPOT</a></p></li>" +
+				"<li><a href=\"http://localhost:8080/cars\">CARS</a></p><li>" +
+				"</ul>";
+
 	}
 
 }
