@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -49,8 +50,11 @@ public class ParkingSpotController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ParkingSpotModel> findById(@PathVariable("id") UUID id) {
-        ParkingSpotModel parkingSpot = parkingSpotService.findById(id);
-        return ResponseEntity.ok().body(parkingSpot);
+    public ResponseEntity<Object> findById(@PathVariable("id") UUID id) {
+        Optional<ParkingSpotModel> parkingSpot = parkingSpotService.findById(id);
+        if(!parkingSpot.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking spot not found");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(parkingSpot.get());
     }
 }

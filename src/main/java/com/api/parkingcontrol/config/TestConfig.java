@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Arrays;
 
 @Configuration
 @Profile("test")
@@ -24,12 +25,12 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//
+
 //        ParkingSpotModel PS1 = new ParkingSpotModel(
-//                "10A",
+//                "02-B",
 //                LocalDateTime.now(ZoneId.of("UTC")),
 //                "Tatiana Macedo",
-//                "212B",
+//                "212",
 //                "A"
 //        );
 //
@@ -40,10 +41,42 @@ public class TestConfig implements CommandLineRunner {
 //                "Silver"
 //        );
 //
-//        PS1.setCarModel(C1);
+//        ParkingSpotModel PS2 = new ParkingSpotModel(
+//                "07-A",
+//                LocalDateTime.now(ZoneId.of("UTC")),
+//                "Jonathan Silva",
+//                "403",
+//                "B"
+//        );
 //
-//        carRepository.save(C1);
-//        parkingSpotRepository.save(PS1);
+//        CarModel C2 = new CarModel(
+//                "OOP8Y42",
+//                "Volkswagen",
+//                "Voyage",
+//                "Black"
+//        );
+//
+//        ParkingSpotModel PS3 = new ParkingSpotModel(
+//                "01-A",
+//                LocalDateTime.now(ZoneId.of("UTC")),
+//                "José Camargo",
+//                "1101",
+//                "A"
+//        );
+//
+//        CarModel C3 = new CarModel(
+//                "PIP4D42",
+//                "Ford",
+//                "EcoSport",
+//                "Blue"
+//        );
+//
+//        PS1.setCarModel(C1);
+//        PS2.setCarModel(C2);
+//        PS3.setCarModel(C3);
+//
+//        carRepository.saveAll(Arrays.asList(C1, C2, C3));
+//        parkingSpotRepository.saveAll(Arrays.asList(PS1, PS2, PS3));
 
     }
 }
