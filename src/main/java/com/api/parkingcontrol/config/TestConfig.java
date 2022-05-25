@@ -77,6 +77,7 @@ public class TestConfig implements CommandLineRunner {
 //
 //        carRepository.saveAll(Arrays.asList(C1, C2, C3));
 //        parkingSpotRepository.saveAll(Arrays.asList(PS1, PS2, PS3));
+//        parkingSpotRepository.save(PS3);
 
     }
 }

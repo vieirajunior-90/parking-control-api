@@ -59,4 +59,15 @@ public class CarController {
         carService.delete(car.get());
         return ResponseEntity.status(HttpStatus.OK).body("Car deleted");
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateCar(@PathVariable("id") Long id,
+                                            @RequestBody @Valid CarDTO carDTO){
+        Optional<CarModel> car = carService.findById(id);
+        if(!car.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Car not found");
+        }
+        BeanUtils.copyProperties(carDTO, car.get());
+        return ResponseEntity.status(HttpStatus.OK).body(carService.save(car.get()));
+    }
 }
