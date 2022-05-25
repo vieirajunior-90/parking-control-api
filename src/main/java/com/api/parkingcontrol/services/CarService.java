@@ -31,5 +31,10 @@ public class CarService {
     public boolean existsByLicensePlate(String licensePlate) {
         return carRepository.existsByLicensePlate(licensePlate);
     }
+
+    @Transactional
+    public void delete(CarModel carModel) {
+        carRepository.delete(carModel);
+    }
 }
 
