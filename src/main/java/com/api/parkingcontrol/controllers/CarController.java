@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cars")
@@ -41,8 +42,11 @@ public class CarController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CarModel> findById(@PathVariable("id") Long id) {
-        CarModel car = carService.findById(id);
-        return ResponseEntity.ok().body(car);
+    public ResponseEntity<Object> findById(@PathVariable("id") Long id) {
+        Optional<CarModel> car = carService.findById(id);
+        if(!car.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Car not found");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(car.get());
     }
 }

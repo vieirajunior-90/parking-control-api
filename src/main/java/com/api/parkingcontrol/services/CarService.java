@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarService {
@@ -23,8 +24,8 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public CarModel findById(Long id) {
-        return carRepository.findById(id).orElse(null);
+    public Optional<CarModel> findById(Long id) {
+        return carRepository.findById(id);
     }
 
     public boolean existsByLicensePlate(String licensePlate) {
